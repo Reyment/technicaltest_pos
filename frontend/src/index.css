@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.disabled {
+    opacity: 0.5; 
+    pointer-events: none;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    background-color: #F8F8F8;
+}
+
+  
