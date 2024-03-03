@@ -6,20 +6,24 @@ import Benefit from '../components/Benefit';
 import State from '../components/State';
 import Testimony from '../components/Testimony.jsx';
 import CTA from '../components/CTAComponent.jsx';
+import NavbarComponent from '../components/NavbarComponent.jsx';
+import FooterComponent from '../components/FooterComponent.jsx';
+
 
 const Home = () => {
 
 
   return (
     <>
+      <NavbarComponent />
       <HeroHome />
       <ProductHome />
-      <Benefit/>
-      <State/>
-      <CTA/>
-      <Testimony/>
+      <Benefit />
+      <State />
+      <CTA />
+      <Testimony />
       <FaqComponent />
-
+      <FooterComponent />
     </>
   );
 };

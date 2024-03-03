@@ -2,171 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RxCaretRight } from 'react-icons/rx';
 import axios from 'axios';
+import NavbarComponent from '../components/NavbarComponent';
+import FooterComponent from '../components/FooterComponent';
 
-
-
-// export const products = [
-//   {
-//     id: 1,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 2,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 3,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 4,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 5,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 6,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 7,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 8,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 9,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 10,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 11,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 12,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 13,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 14,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 15,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-//   {
-//     id: 8,
-//     name: 'Modern Minimalist Sofa',
-//     headline: 'Elegan, Minimalis, Modern',
-//     description: 'This compact sofa fits in small areas and is perfect for family parties and continuous TV viewing. It has a neat design and is easy to lift when you want to refurbish, clean or move.',
-//     price: 'Rp. 12.000.000,00',
-//     qty: '1',
-//     subtotal: 'Rp. 12.000.000,00',
-//     image: '/images/product1.png'
-//   },
-// ];
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -212,6 +50,8 @@ const Product = () => {
 
   return (
     <>
+          <NavbarComponent />
+
       {/* hero product */}
       <section className='pb-8' id='Hero-Product'>
         <div className="  absolute z-30 px-20 pt-32">
@@ -248,14 +88,15 @@ const Product = () => {
         <div className=' p-16 px-20 '>
           <div className='grid grid-cols-3 gap-12 py-8'>
             {currentProducts.map((product) => (
-              <div key={product.pd_id} className='shadow-xl rounded-lg bg-[#FFFFFF]'>
-                <Link to={`/product/${product.pd_id}`}>
-                  <img src={product.pd_image} className='w-full h-72' alt="" />
+              <div key={product._id} className='shadow-xl rounded-lg bg-[#FFFFFF]'>
+                <Link to={`/product/${product._id}`}>
+                  <img src="/images/product1.png" className='w-full h-72' alt="" />
                 </Link>
                 <div className='px-4 py-5'>
-                  <Link to={`/product/${product.pd_id}`}>
+                  <Link to={`/product/${product._id}`}>
                     <h4 className='text-[#642C0C] font-bold text-2xl pt-1-1'>{product.pd_name}</h4>
                   </Link>
+                  <p className='text-sm text-[#979390] py-1'>{product.pd_ct_id && product.pd_ct_id.ct_name}</p>
                   <p className='text-sm text-[#979390] py-1'>{product.pd_headline}</p>
                   <h4 className='text-[#642C0C] font-semibold text-1xl'>{product.pd_price}</h4>
                 </div>
@@ -285,6 +126,10 @@ const Product = () => {
           </button>
         )}
       </div>
+      
+      <FooterComponent />
+
+
     </>
   )
 }
